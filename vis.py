@@ -10,7 +10,7 @@ import matplotlib.colors as colors
 from math import pi as PI
 from math import atan2, sin, cos, sqrt
 
-
+import cv2
 
 def visualize_traj_dynamic(ws_model, X, U, goal, time = None, name=None):
     figure = pyplot.figure()
@@ -55,9 +55,9 @@ def visualize_traj_dynamic(ws_model, X, U, goal, time = None, name=None):
     if name:
         pyplot.savefig(name, dpi = 200)
         #pyplot.savefig(name,bbox_inches='tight')
-    pyplot.cla()
-    pyplot.close(figure)
+
     return figure
+    
 
 def get_cmap(N):
     '''Returns a function that maps each index in 0, 1, ... N-1 to a distinct RGB color.'''

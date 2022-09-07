@@ -1,9 +1,10 @@
 import sys
 
-
+import matplotlib.pyplot as plt
 from RVO import RVO_update, reach, compute_V_des, reach
 from vis import visualize_traj_dynamic
 
+import cv2
 
 #------------------------------
 #define workspace model
@@ -52,6 +53,14 @@ while t*step < total_time:
     # visualization
     if t%10 == 0:
         visualize_traj_dynamic(ws_model, X, V, goal, time=t*step, name='data/snap%s.png'%str(t/10))
+        
         #visualize_traj_dynamic(ws_model, X, V, goal, time=t*step, name='data/snap%s.png'%str(t/10))
+    
+        print('data/snap%s.png'%str(t/10))
+        img = cv2.imread('data/snap%s.png'%str(t/10))
+        
+        cv2.imshow('tmep', img)
+        cv2.waitKey(1)
+    
     t += 1
     
